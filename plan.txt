@@ -1,0 +1,17 @@
+User Experience
+--> searches for a subject
+--> selects top five videos that they want (this solves problem of repeated info)
+--> can choose to subscribe to same topic every week (new videos will appear to choose from) or have it be one time
+--> a video and audio flash briefing is created for that topic and saved to its "folder" with timestamp (weekly, if they so choose)
+
+Other Functionality
+- manage subscriptions 
+- view different folders containing flash briefings
+- share the briefings
+- provide links to the full videos (that are flashed into one)
+
+Preliminary Steps
+1. Create basic app
+2. Allow Google Video search within the app
+3. Allow choice of videos
+4. Cut videos into a flash briefing that stops
