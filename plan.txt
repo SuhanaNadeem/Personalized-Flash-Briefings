@@ -9,9 +9,11 @@ Other Functionality
 - view different folders containing flash briefings
 - share the briefings
 - provide links to the full videos (that are flashed into one)
+- option to automate the selection of videos
 
 Preliminary Steps
+* First: decide if Dart + Flutter can be used for all of these functions
 1. Create basic app
 2. Allow Google Video search within the app
 3. Allow choice of videos
-4. Cut videos into a flash briefing that stops
+4. Cut videos into a flash briefing that stops with speech
