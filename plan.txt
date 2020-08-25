@@ -14,6 +14,7 @@ Other Functionality
 Preliminary Steps
 * First: decide if Dart + Flutter can be used for all of these functions
 1. Create basic app
+--> login page that leads to four pages (only one functional for now, w one topic ) 
 2. Allow Google Video search within the app
 3. Allow choice of videos
 4. Cut videos into a flash briefing that stops with speech
