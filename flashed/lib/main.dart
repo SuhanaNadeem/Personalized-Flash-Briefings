@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_ui/flutter_firebase_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 void main()=> runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -8,6 +11,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseUser _user;
+  GoogleSignIn _googleSignIn = new GoogleSignIn();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,5 +32,14 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+
+  Future<void> handleSignIn() async{
+    GoogleSignInAccount = googleSignInAccount = await _googleSignIn.signIn();
+    GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+    AuthCredential credential = GoogleAuthProvider.getCredential(idToken: googleSignInAuthentication.idToken, 
+    accessToken: googleSignInAuthentication.accessToken);
+    AuthResult result = (await _auth.signInWithCredential(credential));
+    
   }
 }
