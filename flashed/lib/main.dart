@@ -24,15 +24,31 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text("Google Authentication"),
         ),
-        body: Center(
+        body: isSignIn ? Center(
+          child: Column(
+            children: <Widget>[
+              CircleAvatar(
+                backgroundImage: NetworkImage(_user.photoUrl),
+              ),
+              Text(_user.displayName),
+              OutlineButton(
+                onPressed: () {},
+                child:Text("Logout"),
+              )
+            ],
+          ),
+        )
+        : Center(
           child: OutlineButton(
             onPressed: (){},
-            child: Text("Sign in with Google"),
+            child: Text("Sign In With Google"),
           ),
-        ),
+        )
       ),
     );
   }
+
+  bool isSignIn = false;
 
   Future<void> handleSignIn() async{
     GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
@@ -40,8 +56,23 @@ class _MyAppState extends State<MyApp> {
     AuthCredential credential = GoogleAuthProvider.getCredential(
       idToken: googleSignInAuthentication.idToken, 
       accessToken: googleSignInAuthentication.accessToken);
+    
     AuthResult result = (await _auth.signInWithCredential(credential));
+    
     _user = result.user;
+  
+    setState(() {
+      isSignIn=true;
+    });
+  }
 
+  Future<void> googleSignout() async
+  {
+    await _auth.signOut().then((onValue) (
+      _googleSignIn.signOut();
+      setState((){
+        isSignIn=false;
+      });
+    });
   }
 }
