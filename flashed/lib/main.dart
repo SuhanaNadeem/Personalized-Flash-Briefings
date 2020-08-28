@@ -68,10 +68,10 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> googleSignout() async
   {
-    await _auth.signOut().then((onValue) (
+  await _auth.signOut().then((onValue) {
       _googleSignIn.signOut();
       setState((){
-        isSignIn=false;
+        isSignIn=true;
       });
     });
   }
