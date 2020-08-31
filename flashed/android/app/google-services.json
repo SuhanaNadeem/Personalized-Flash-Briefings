@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "671936765785",
+    "firebase_url": "https://flashed-5b537.firebaseio.com",
+    "project_id": "flashed",
+    "storage_bucket": "flashed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671936765785:android:58c6a981b83bb74b3b7648",
+        "android_client_info": {
+          "package_name": "com.example.flashed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671936765785-3ks9m9nhrg8evvjhuaqg4qj9dtq6nqnh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR6SbTrFZ2F-S_tllmIlWzf6cOYNHw5O0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671936765785-3ks9m9nhrg8evvjhuaqg4qj9dtq6nqnh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

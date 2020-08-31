@@ -12,6 +12,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseUser _user;
+  @override
+  void initState(){
+    super.initState();
+    isSignIn=false;
+  }
   GoogleSignIn _googleSignIn = new GoogleSignIn();
   
   @override
@@ -24,26 +29,31 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text("Google Authentication"),
         ),
-        body: isSignIn ? Center(
-          child: Column(
-            children: <Widget>[
-              CircleAvatar(
-                backgroundImage: NetworkImage(_user.photoUrl),
-              ),
-              Text(_user.displayName),
-              OutlineButton(
-                onPressed: () {},
-                child:Text("Logout"),
-              )
-            ],
-          ),
-        )
+        body: isSignIn 
+        ? Center(
+            child: Column(
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundImage: NetworkImage(_user.photoUrl),
+                ),
+                Text(_user.displayName),
+                OutlineButton(
+                  onPressed: () {
+                    googleSignout();
+                  },
+                  child:Text("Logout"),
+                )
+              ],
+            ),
+          )
         : Center(
-          child: OutlineButton(
-            onPressed: (){},
-            child: Text("Sign In With Google"),
-          ),
-        )
+            child: OutlineButton(
+              onPressed: (){
+                handleSignIn();
+              },
+              child: Text("Sign In With Google"),
+            ),
+          )
       ),
     );
   }
@@ -68,10 +78,10 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> googleSignout() async
   {
-  await _auth.signOut().then((onValue) {
+    await _auth.signOut().then((onValue) {
       _googleSignIn.signOut();
       setState((){
-        isSignIn=true;
+        isSignIn=false;
       });
     });
   }
