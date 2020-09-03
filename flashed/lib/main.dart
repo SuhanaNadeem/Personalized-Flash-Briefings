@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 void main()=> runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> handleSignIn() async{
     GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
     GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+    
     AuthCredential credential = GoogleAuthProvider.getCredential(
       idToken: googleSignInAuthentication.idToken, 
       accessToken: googleSignInAuthentication.accessToken);
