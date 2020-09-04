@@ -1,3 +1,4 @@
+import 'package:flashed/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flashed/services/auth.dart';
 
@@ -46,6 +47,7 @@ class _RegisterState extends State<Register > {
             children: <Widget>[
               SizedBox(height:20.0),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Email'),
                 validator: (val) => val.isEmpty ? 'Enter an email' : null,
 
                 onChanged: (val){
@@ -54,6 +56,7 @@ class _RegisterState extends State<Register > {
               ),
               SizedBox(height:20.0),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Password'),
                 obscureText: true,
                 validator: (val) => val.length < 6 ? 'Enter a password 6+ characters long' : null,
                 onChanged: (val){
@@ -63,7 +66,7 @@ class _RegisterState extends State<Register > {
               ),
               SizedBox(height: 20.0),
               RaisedButton(
-                color: Colors.pink[400],
+                color: Colors.blue[400],
                 child: Text(
                   'Register',
                   style: TextStyle(color: Colors.white),
