@@ -1,6 +1,7 @@
 import 'package:flashed/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flashed/services/auth.dart';
+import 'package:flashed/shared/loading.dart';
 
 class Register  extends StatefulWidget {
   final Function toggleView;
@@ -14,6 +15,7 @@ class _RegisterState extends State<Register > {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   // text field state
   String email = "";
@@ -22,8 +24,8 @@ class _RegisterState extends State<Register > {
 
   @override
   Widget build(BuildContext context) {
-    
-    return Scaffold(
+    // show loading screen if loading, else scaffold
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.blue[100],
       appBar: AppBar(
         backgroundColor: Colors.blue[400],
@@ -73,10 +75,15 @@ class _RegisterState extends State<Register > {
                 ),
                 onPressed: () async{
                   if (_formKey.currentState.validate()){
+                    setState(() => loading = true);
                     dynamic result = await _auth.registerWithEmailAndPassword(email, password);
                     
                     if(result == null){
-                      setState(() => error = 'Please supply a valid email');
+                      setState(() {
+                        error = 'Please supply a valid email';
+                        loading = false;
+                      });
+
                     }
                   }
                 }
