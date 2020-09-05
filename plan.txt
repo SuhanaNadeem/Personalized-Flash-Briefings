@@ -19,6 +19,11 @@ Preliminary Steps
 3. Allow choice of videos
 4. Cut videos into a flash briefing that stops with speech
 
+User Data
+- after new user registers, they have a new record of "profile", containing topics, preferences (email each week, which ones to include), name, email
+
+First in  SIGN IN, then goes to TOPIC_LIST page, and 
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
